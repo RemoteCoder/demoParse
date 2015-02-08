@@ -1,0 +1,124 @@
+<div ng-controller="TwilioCtrl" class="container">
+  <div class="page-header">
+    <h1>Import Data From CSV/XLSX/XLS</h1>
+  </div>
+  <!--<form>-->
+  <!--<select name="phone_number" ng-model="selectedPhone" ng-change="abc(selectedPhone)">-->
+  <!--<option value="">Select Phone Number</option>-->
+  <!--<%# @numbers.each do |number| %>-->
+  <!--<option value="<%#= number.phone_number %>"><%#= number.phone_number %></option>-->
+  <!--<%# end %>-->
+
+  <!--</select>-->
+
+  <!--</form>-->
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        Import Data
+      </h3>
+    </div>
+    <div class="panel-body">
+      <div class="row-rounded">
+        <%= form_tag user_details_import_csv_or_xlsx_path, :class => 'form-inline', multipart: true do %>
+
+            <div class="form-group">
+              <div class="col-sm-12">
+                <label class="btn btn-primary" for="my-file-selector">
+                  <%= file_field_tag :file, :id => "my-file-selector", :style => "display:none;" %>
+                  Browse File
+                </label>
+
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class=" col-sm-10">
+                <%= submit_tag "Import", :class => "btn btn-primary" %>
+              </div>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        Imported Data
+      </h3>
+    </div>
+    <!--<div class="panel-body">-->
+      <!--Panel content-->
+    <!--</div>-->
+  </div>
+
+
+  <div class="row">
+
+    <% if @user_details.present? %>
+        <div class="table-responsive">
+        <table class=" table table-hover table-bordered">
+          <thead>
+          <tr>
+            <th class="col-md-2">Serial</th>
+            <th class="col-md-2">FirstName</th>
+            <th class="col-md-2">LastName</th>
+            <th class="col-md-5">Email</th>
+            <th class="col-md-2">Phone</th>
+            <th class="col-md-2">Street</th>
+            <th class="col-md-2">City</th>
+            <th class="col-md-2">State</th>
+            <th class="col-md-2">Zip</th>
+            <th class="col-md-2">Job Service</th>
+            <th class="col-md-2">Price</th>
+            <th class="col-md-2">Cycle</th>
+            <th class="col-md-2">Next Job At</th>
+            <th class="col-md-2">Note</th>
+          </tr>
+          </thead>
+          <tbody>
+
+
+          <% @user_details.each do |user| %>
+              <%
+                 # style = ''
+                 style = user.field_valid_status? ? '' : ' bgcolor=#EA8B88'
+              %>
+              <tr>
+                <td><%= user.id %></td>
+                <td><%= user.first_name %></td>
+                <td><%= user.last_name %></td>
+                <td><%= user.email %></td>
+                <td><%= user.phone %></td>
+                <td><%= user.street %></td>
+                <td><%= user.city %></td>
+                <td><%= user.state %></td>
+                <td><%= user.zip_code %></td>
+                <td><%= user.job_service_name %></td>
+                <td><%= user.price %></td>
+                <td><%= user.cycle %></td>
+                <td><%= user.next_job_at %></td>
+                <td <%= style %>><%= user.note.html_safe %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+        </div>
+    <% end %>
+    <!--<div>-->
+    <!--<h2 ng-show="selectedPhone != null"> All Message From : {{selectedPhone }} ({{messages.length}})</h2>-->
+
+    <!--<div ng-repeat='msg in messages' style=" border: 1px solid #0F192A; margin: 10px 10px; padding: 10px 10px">-->
+    <!--<p>From: {{msg.from}}</p><br>-->
+
+    <!--<p>Date: {{msg.date_sent}}</p><br>-->
+
+    <!--<p>Message:<br>{{msg.body}}</p>-->
+    <!--</tr>-->
+    <!--</div>-->
+
+    <!--</div>-->
+    </div>
+</div>

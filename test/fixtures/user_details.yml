@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  first_name: MyString
+  last_name: MyString
+  email: MyString
+  phone: MyString
+  street: MyString
+  city: MyString
+  state: MyString
+  zip_code: MyString
+  job_service_name: MyString
+  price: 1.5
+  cycle: 1
+  next_job_at: 2015-02-08
+  field_valid_status: false
+  note: MyString
+
+two:
+  first_name: MyString
+  last_name: MyString
+  email: MyString
+  phone: MyString
+  street: MyString
+  city: MyString
+  state: MyString
+  zip_code: MyString
+  job_service_name: MyString
+  price: 1.5
+  cycle: 1
+  next_job_at: 2015-02-08
+  field_valid_status: false
+  note: MyString
